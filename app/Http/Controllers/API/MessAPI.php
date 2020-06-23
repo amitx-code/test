@@ -52,11 +52,11 @@ class MessAPI extends Controller
         $mess->name=$dat['name'];
         $mess->phone=$dat['phone'];
         $mess->mess=$dat['mess'];
-        $mess->saveTo('db');
-        $mess->saveTo('file');
-        $mess->saveTo('email');
-        dd($mess);
-        $result=true;
+        $result=$mess->saveTo('db');
+        $result=$mess->saveTo('file');
+        $result=$mess->saveTo('email');
+
+
         return response()->json([
             'result' => $result,
 

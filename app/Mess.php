@@ -11,11 +11,11 @@ class Mess extends Model
         public function saveTo($name){
             switch ($name) {
                 case "db":
-                    $this->save();
+                    return $this->save();
                 case "file":
-                    $this->saveToFile();
+                   return $this->saveToFile();
                 case "email":
-                    $this->sendToEmail();
+                    return $this->sendToEmail();
 
 
 
@@ -24,7 +24,7 @@ class Mess extends Model
         public function saveToFile(){
             $text='Name: '.$this->name."\n".'Phone: '.$this->phone."\n".'Mess: '.$this->mess;
             Storage::put('file.txt', $text);
-            return;
+            return true;
 
         }
         public function sendToEmail(){
@@ -32,6 +32,6 @@ class Mess extends Model
 
             dispatch($jobSend);
 
-
+            return true;
         }
 }
